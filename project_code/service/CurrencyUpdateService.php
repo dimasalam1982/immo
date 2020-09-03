@@ -30,7 +30,7 @@ class CurrencyUpdateService
     /**
      * Update data for currency from sbr.com
      *
-     * @return int|null
+     * @return int
      * @throws \yii\db\Exception
      */
     public function downloadAndUpdateFromSbr(): int
