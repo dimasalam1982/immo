@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  title: 'Immo exapmle API'
+  contact:
+    email: dimasalam@yandex.ru
+  version: 0.0.1
+servers:
+  -
+    url: 'http://localhost'
+    description: 'Immo API server'
+paths:
+  /v1/currencies:
+    get:
+      tags:
+        - Currency
+      summary: 'Getting currency list with pagination'
+      parameters:
+        -
+          name: per-page
+          in: query
+          description: 'Pagination param. Count items per one page'
+          required: false
+          schema:
+            type: integer
+        -
+          name: page
+          in: query
+          description: 'Pagination param. Number of page'
+          required: false
+          schema:
+            type: integer
+        -
+          name: sort
+          in: query
+          description: 'Sorting field'
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - id
+                - name
+                - rate
+                - insert_dt
+      responses:
+        default:
+          description: 'successful operation'
+      security:
+        -
+          api_key: []
+  '/v1/currency/{currency_id}':
+    get:
+      tags:
+        - Currency
+      summary: 'Getting one currency'
+      parameters:
+        -
+          name: currency_id
+          in: path
+          description: 'ID of currency'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        default:
+          description: 'successful operation'
+      security:
+        -
+          api_key: []
+components:
+  securitySchemes:
+    api_key:
+      type: http
+      scheme: bearer
+tags:
+  -
+    name: Currency
+    description: 'Currency data'
+
