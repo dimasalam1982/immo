@@ -54,6 +54,8 @@ Make migrations:
 
 `docker exec --user root -it immo-fpm bash -c "cd immo; php yii migrate"`
 
+Congratulations! You have deployed the project!
+
 ## Updating currency data
 
 Run command:
@@ -74,10 +76,4 @@ http://localhost/openapi/index.html
 
 If you will be do changes in API methods you need to re-build swagger yaml file:
 
-`vendor/bin/openapi --bootstrap config/swagger_params.php --format yaml ./modules/v1 >web/openapi/api.yaml`
-
-or if you are using docker:
-
 `docker exec -it immo-fpm bash -c "cd immo; vendor/bin/openapi --bootstrap config/swagger_params.php --format yaml ./modules/v1 >web/openapi/api.yaml;"`
-
-Congratulations! You have deployed the project!
